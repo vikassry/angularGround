@@ -2,11 +2,18 @@
 <html ng-app="store">
 <head>
 	<title> Index </title>
-	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
 </head>
-<body>
 	<script type="text/javascript" src="angular.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
-	<h2> {{"Hello " + "World !"}}
+<body ng-controller="storeController as store">
+	
+	<div  ng-repeat="product in store.products" ng-hide={{product.isSoltOut}}>
+		<h2> {{product.name}} </h2>
+		<p><i>Price: $ {{product.price}} </i></p>
+		<p> {{product.desc}} </p>
+		<button ng-show="product.canBePurchased"> Buy </button>
+		<hr>
+	</div>	
+	
 </body>
 </html>
